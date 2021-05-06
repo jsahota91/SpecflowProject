@@ -9,6 +9,15 @@ Scenario: Add product to cart
 	And I click the T-shirts tab 
 	When I choose an item and click add to cart
 	Then I should get a success alert "Product successfully added to your shopping cart"
+  
+@sad
+Scenario: Null quantity when entering a word
+	Given I go to the homepage
+	And I click the T-shirts tab 
+	And I click the more button
+	When I enter a string in the quantity field "word"
+	When I click the add to cart button
+	Then I should get an error alert "Null quantity."
 
 	@unhappy
 Scenario: Add product to too high a value
@@ -27,5 +36,5 @@ Scenario: Add product with zero quantity
 	And I click the T-shirts tab
 	When I choose an item and click more
 	And I change the quantity to "0"
-	And I click the product page add to cart
-	Then An error popup should appear with the message "Null quantity."
+	When I click the add to cart button
+	Then I should get an error alert "Null quantity."

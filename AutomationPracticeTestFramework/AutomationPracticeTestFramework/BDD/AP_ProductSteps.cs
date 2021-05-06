@@ -41,7 +41,7 @@ namespace AutomationPracticeTestFramework.BDD
         [When(@"I change the quantity to ""(.*)""")]
         public void WhenIChangeTheQuantityTo(string quantity)
         {
-            _website.AP_ProductPage.ChangeQuantity(quantity);
+            _website.AP_ProductPage.GetQuantityInput(quantity);
         }
 
         // Click more button
@@ -49,14 +49,6 @@ namespace AutomationPracticeTestFramework.BDD
         public void WhenIChooseAnItemAndClickMore()
         {
             _website.AP_ProductPage.ClickMoreBtn();
-        }
-
-        // Add to cart from product page
-        [When(@"I click the product page add to cart")]
-        public void WhenIClickTheProductPageAddToCart()
-        {
-            _website.AP_ProductPage.ClickPPAddToCartBtn();
-            Thread.Sleep(2000);
         }
 
         // Assert Cart Quantity
@@ -73,11 +65,29 @@ namespace AutomationPracticeTestFramework.BDD
             Assert.That(_website.AP_ProductPage.AlertMessage(), Does.Contain(successmsg));
         }
 
-        // Null quantity error pop up
-        [Then(@"An error popup should appear with the message ""(.*)""")]
-        public void ThenAnErrorPopupShouldAppearWithTheMessage(string expResult)
+        [Given(@"I click the more button")]
+        public void GivenIClickTheMoreButton()
         {
-            Assert.That(_website.AP_ProductPage.NullQuantity(), Is.EqualTo(expResult));
+            _website.AP_ProductPage.ClickMoreBtn();
+        }
+
+        [When(@"I enter a string in the quantity field ""(.*)""")]
+        public void WhenIEnterAStringInTheQuantityField(string quantity)
+        {
+            _website.AP_ProductPage.GetQuantityInput(quantity);
+        }
+
+        [When(@"I click the add to cart button")]
+        public void WhenIClickTheAddToCartButton()
+        {
+            _website.AP_ProductPage.ClickPPAddToCartBtn();
+            Thread.Sleep(2000);
+        }
+
+        [Then(@"I should get an error alert ""(.*)""")]
+        public void ThenIShouldGetAnErrorAlert(string nullAlertMsg)
+        {
+            Assert.That(_website.AP_ProductPage.NullQuantityAlert, Does.Contain(nullAlertMsg));
         }
 
 

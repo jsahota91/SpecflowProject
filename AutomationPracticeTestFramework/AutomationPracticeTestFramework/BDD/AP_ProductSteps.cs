@@ -84,11 +84,28 @@ namespace AutomationPracticeTestFramework.BDD
             Thread.Sleep(3000);
         }
 
+        // Cart item remove
+        [When(@"I hover my mouse over the cart and click the cart cross button")]
+        public void WhenIHoverMyMouseOverTheCartAndClickTheCartCrossButton()
+        {
+            _website.AP_ProductPage.RemoveItemClick();
+            Thread.Sleep(2000);
+        }
+
+
         [Then(@"I should get an error alert ""(.*)""")]
         public void ThenIShouldGetAnErrorAlert(string nullAlertMsg)
         {
             Assert.That(_website.AP_ProductPage.NullQuantityAlert, Does.Contain(nullAlertMsg));
         }
+
+        // Cart quantity success
+        [Then(@"The quantity of items in the cart should be ""(.*)""")]
+        public void ThenTheQuantityOfItemsInTheCartShouldBe(string expResult)
+        {
+            Assert.That(_website.AP_ProductPage.CartQuantity(), Is.EqualTo(expResult));
+        }
+
 
         [AfterScenario]
         public void DisposeWebDriver()

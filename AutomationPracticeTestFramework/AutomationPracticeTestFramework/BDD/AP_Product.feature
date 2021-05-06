@@ -38,3 +38,21 @@ Scenario: Add product with zero quantity
 	And I change the quantity to "0"
 	When I click the add to cart button
 	Then I should get an error alert "Null quantity."
+
+	@happy
+Scenario: Change Quantity
+	Given I go to the homepage
+	And I click the T-shirts tab
+	When I choose an item and click more
+	And I change the quantity to "3"
+	When I click the add to cart button
+	Then The quantity of items in the cart should be "3"
+
+		@happy
+Scenario: Remove item from cart
+	Given I go to the homepage
+	And I click the T-shirts tab 
+	When I choose an item and click add to cart
+	And I close the success popup
+	And I hover my mouse over the cart and click the cart cross button
+	Then The items in the cart should be "(empty)"

@@ -20,3 +20,12 @@ Scenario: Add product to too high a value
 	And I change the quantity to "9999999999999999999"
 	And I click the product page add to cart
 	Then The items in the cart should be "(empty)"
+
+	@unhappy
+Scenario: Add product with zero quantity
+	Given I go to the homepage
+	And I click the T-shirts tab
+	When I choose an item and click more
+	And I change the quantity to "0"
+	And I click the product page add to cart
+	Then An error popup should appear with the message "Null quantity."

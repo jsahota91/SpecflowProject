@@ -59,7 +59,6 @@ namespace AutomationPracticeTestFramework.BDD
             Thread.Sleep(2000);
         }
 
-
         // Assert Cart Quantity
         [Then(@"The items in the cart should be ""(.*)""")]
         public void ThenTheItemsInTheCartShouldBe(string expecString)
@@ -73,6 +72,14 @@ namespace AutomationPracticeTestFramework.BDD
         {
             Assert.That(_website.AP_ProductPage.AlertMessage(), Does.Contain(successmsg));
         }
+
+        // Null quantity error pop up
+        [Then(@"An error popup should appear with the message ""(.*)""")]
+        public void ThenAnErrorPopupShouldAppearWithTheMessage(string expResult)
+        {
+            Assert.That(_website.AP_ProductPage.NullQuantity(), Is.EqualTo(expResult));
+        }
+
 
         [AfterScenario]
         public void DisposeWebDriver()

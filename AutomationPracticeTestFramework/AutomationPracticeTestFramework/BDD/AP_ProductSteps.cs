@@ -81,7 +81,7 @@ namespace AutomationPracticeTestFramework.BDD
         public void WhenIClickTheAddToCartButton()
         {
             _website.AP_ProductPage.ClickPPAddToCartBtn();
-            Thread.Sleep(2000);
+            Thread.Sleep(3000);
         }
 
         [Then(@"I should get an error alert ""(.*)""")]
@@ -89,7 +89,6 @@ namespace AutomationPracticeTestFramework.BDD
         {
             Assert.That(_website.AP_ProductPage.NullQuantityAlert, Does.Contain(nullAlertMsg));
         }
-
 
         [AfterScenario]
         public void DisposeWebDriver()

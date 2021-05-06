@@ -27,7 +27,7 @@ Scenario: Add product to too high a value
 	And I close the success popup
 	And I choose an item and click more
 	And I change the quantity to "9999999999999999999"
-	And I click the product page add to cart
+	When I click the add to cart button
 	Then The items in the cart should be "(empty)"
 
 	@unhappy

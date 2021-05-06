@@ -84,6 +84,15 @@ namespace AutomationPracticeTestFramework.BDD
             Thread.Sleep(3000);
         }
 
+        // Cart item remove
+        [When(@"I hover my mouse over the cart and click the cart cross button")]
+        public void WhenIHoverMyMouseOverTheCartAndClickTheCartCrossButton()
+        {
+            _website.AP_ProductPage.RemoveItemClick();
+            Thread.Sleep(2000);
+        }
+
+
         [Then(@"I should get an error alert ""(.*)""")]
         public void ThenIShouldGetAnErrorAlert(string nullAlertMsg)
         {

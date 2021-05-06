@@ -56,3 +56,25 @@ Scenario: Remove item from cart
 	And I close the success popup
 	And I hover my mouse over the cart and click the cart cross button
 	Then The items in the cart should be "(empty)"
+
+#@happy
+Scenario: Select size of item
+	Given I go to the homepage
+	And I click the T-shirts tab
+	When I choose an item and click more
+	And I select the size L
+	When I click the add to cart button
+	Then I should get a success alert with the selected size "L"
+
+
+@unhappy
+Scenario: Change quantity to negative number
+Given I go to the homepage
+And I click the T-shirts tab
+When I choose an item and click add to cart
+And I close the success popup
+And I choose an item and click more
+And I change the quantity to "-10"
+When I click the add to cart button
+Then The Quantity should be "11"
+

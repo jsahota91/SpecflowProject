@@ -29,7 +29,45 @@ namespace AutomationPracticeTestFramework.BDD
             _website.AP_ProductPage.ClickAddToCartBtn();
             Thread.Sleep(2000);
         }
-        
+
+        // Click close button
+        [When(@"I close the success popup")]
+        public void WhenICloseTheSuccessPopup()
+        {
+            _website.AP_ProductPage.ClickCrossBtn();
+        }
+
+        // Change Quantity
+        [When(@"I change the quantity to ""(.*)""")]
+        public void WhenIChangeTheQuantityTo(string quantity)
+        {
+            _website.AP_ProductPage.ChangeQuantity(quantity);
+        }
+
+        // Click more button
+        [When(@"I choose an item and click more")]
+        public void WhenIChooseAnItemAndClickMore()
+        {
+            _website.AP_ProductPage.ClickMoreBtn();
+        }
+
+        // Add to cart from product page
+        [When(@"I click the product page add to cart")]
+        public void WhenIClickTheProductPageAddToCart()
+        {
+            _website.AP_ProductPage.ClickPPAddToCartBtn();
+            Thread.Sleep(2000);
+        }
+
+
+        // Assert Cart Quantity
+        [Then(@"The items in the cart should be ""(.*)""")]
+        public void ThenTheItemsInTheCartShouldBe(string expecString)
+        {
+            Assert.That(_website.AP_ProductPage.CartEmpty(), Is.EqualTo(expecString));
+        }
+
+
         [Then(@"I should get a success alert ""(.*)""")]
         public void ThenIShouldGetASuccessAlert(string successmsg)
         {

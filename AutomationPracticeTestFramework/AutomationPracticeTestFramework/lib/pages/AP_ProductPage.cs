@@ -12,6 +12,12 @@ namespace AutomationPracticeTestFramework
         private IWebElement _addToCartBtn => SeleniumDriver.FindElement(By.CssSelector(".ajax_add_to_cart_button > span"));
         private IWebElement _alertMsg => SeleniumDriver.FindElement(By.ClassName("layer_cart_product"));
         private IWebElement _crossBtn => SeleniumDriver.FindElement(By.CssSelector(".cross"));
+        private IWebElement _quantityBox => SeleniumDriver.FindElement(By.Id("quantity_wanted"));
+        //private IWebElement _cartQuantity => SeleniumDriver.FindElement(By.ClassName("ajax_cart_quantity"));
+        private IWebElement _cartEmpty => SeleniumDriver.FindElement(By.ClassName("ajax_cart_no_product"));
+        private IWebElement _moreBtn => SeleniumDriver.FindElement(By.CssSelector(".lnk_view > span"));
+        private IWebElement _productPageAddToCartBtn => SeleniumDriver.FindElement(By.Name("Submit"));
+
 
         public AP_ProductPage(IWebDriver seleniumDriver)
         {
@@ -41,6 +47,26 @@ namespace AutomationPracticeTestFramework
             _crossBtn.Click();
         }
 
+        public void ChangeQuantity(string quantity)
+        {
+            _quantityBox.SendKeys(quantity);
+        }
+
+        public string CartEmpty()
+        {
+            var test = _cartEmpty.Text;
+            return _cartEmpty.Text;
+        }
+
+        public void ClickMoreBtn()
+        {
+            _moreBtn.Click();
+        }
+
+        public void ClickPPAddToCartBtn()
+        {
+            _productPageAddToCartBtn.Click();
+        }
         
     }
 }

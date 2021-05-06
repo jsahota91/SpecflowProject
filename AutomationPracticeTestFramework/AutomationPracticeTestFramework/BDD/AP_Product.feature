@@ -38,3 +38,25 @@ Scenario: Add product with zero quantity
 	And I change the quantity to "0"
 	When I click the add to cart button
 	Then I should get an error alert "Null quantity."
+
+#@happy
+Scenario: Select size of item
+	Given I go to the homepage
+	And I click the T-shirts tab
+	When I choose an item and click more
+	And I select the size L
+	When I click the add to cart button
+	Then I should get a success alert with the selected size "L"
+
+
+@unhappy
+Scenario: Change quantity to negative number
+Given I go to the homepage
+And I click the T-shirts tab
+When I choose an item and click add to cart
+And I close the success popup
+And I choose an item and click more
+And I change the quantity to "-10"
+When I click the add to cart button
+Then The Quantity should be "11"
+

@@ -19,9 +19,9 @@ namespace AutomationPracticeTestFramework
             SeleniumDriver = new SeleniumDriverConfig(driver, pageLoadSecs, waitSecs).Driver;
             //construct the page objects with a reference to the driver
             AP_HomePage = new AP_HomePage(SeleniumDriver);
-            AP_SigninPage = new AP_SigninPage(SeleniumDriver);
-            AP_CreateAccount = new AP_CreateAccount(SeleniumDriver);
-            AP_ForgotPassword = new AP_ForgotPassword(SeleniumDriver);
+            //AP_SigninPage = new AP_SigninPage(SeleniumDriver);
+            //AP_CreateAccount = new AP_CreateAccount(SeleniumDriver);
+            //AP_ForgotPassword = new AP_ForgotPassword(SeleniumDriver);
             AP_ProductPage = new AP_ProductPage(SeleniumDriver);
         }
 

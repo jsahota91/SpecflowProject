@@ -90,6 +90,24 @@ namespace AutomationPracticeTestFramework.BDD
             Assert.That(_website.AP_ProductPage.NullQuantityAlert, Does.Contain(nullAlertMsg));
         }
 
+        [When(@"I select the size L")]
+        public void WhenISelectTheSizeL()
+        {
+            _website.AP_ProductPage.GetSizeSelected();
+        }
+
+        [Then(@"I should get a success alert with the selected size ""(.*)""")]
+        public void ThenIShouldGetASuccessAlertWithTheSelectedSize(string sizeSelected)
+        {
+            Assert.That(_website.AP_ProductPage.DisplaySelectedItem, Does.Contain(sizeSelected));
+        }
+
+        [Then(@"The Quantity should be ""(.*)""")]
+        public void ThenTheQuantityShouldBe(int quantity)
+        {
+            Assert.That(_website.AP_ProductPage.CheckQuantitySize(), Is.EqualTo(quantity.ToString()));
+        }
+
         [AfterScenario]
         public void DisposeWebDriver()
         {

@@ -12,8 +12,9 @@ namespace AutomationPracticeTestFramework
         private IWebElement _addToCartBtn => SeleniumDriver.FindElement(By.CssSelector(".ajax_add_to_cart_button > span"));
         private IWebElement _alertMsg => SeleniumDriver.FindElement(By.ClassName("layer_cart_product"));
         private IWebElement _crossBtn => SeleniumDriver.FindElement(By.CssSelector(".cross"));
+        private IWebElement _cartEmpty => SeleniumDriver.FindElement(By.ClassName("ajax_cart_no_product"));
         private IWebElement _moreBtn => SeleniumDriver.FindElement(By.CssSelector(".lnk_view > span"));
-        private IWebElement _exclusiveAddToCartBtn => SeleniumDriver.FindElement(By.CssSelector(".exclusive > span"));
+        private IWebElement _productPageAddToCartBtn => SeleniumDriver.FindElement(By.Name("Submit"));
         private IWebElement _nullQuantity => SeleniumDriver.FindElement(By.ClassName("fancybox-error"));
         private IWebElement _quantityField => SeleniumDriver.FindElement(By.Id("quantity_wanted"));
 
@@ -51,11 +52,10 @@ namespace AutomationPracticeTestFramework
 
         public void ClickExclusiveBtn()
         {
-            _exclusiveAddToCartBtn.Click();
+            _productPageAddToCartBtn.Click();
         }
 
         
-
         public void GetQuantityInput(string inputQuantity)
         {
             _quantityField.Clear();
@@ -68,6 +68,24 @@ namespace AutomationPracticeTestFramework
             _crossBtn.Click();
         }
 
-        
+        public string CartEmpty()
+        {
+            return _cartEmpty.Text;
+        }
+
+        public void ClickMoreBtn()
+        {
+            _moreBtn.Click();
+        }
+
+        public void ClickPPAddToCartBtn()
+        {
+            _productPageAddToCartBtn.Click();
+        }
+
+        public string NullQuantity()
+        {
+            return _nullQuantity.Text;
+        }
     }
 }

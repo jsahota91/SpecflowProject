@@ -56,7 +56,6 @@ Scenario: Remove item from cart
 	And I close the success popup
 	And I hover my mouse over the cart and click the cart cross button
 	Then The items in the cart should be "(empty)"
-	Then I should get an error alert "Null quantity."
 
 #@happy
 Scenario: Select size of item

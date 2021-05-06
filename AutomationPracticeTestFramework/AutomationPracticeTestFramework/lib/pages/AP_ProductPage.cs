@@ -17,6 +17,7 @@ namespace AutomationPracticeTestFramework
         private IWebElement _productPageAddToCartBtn => SeleniumDriver.FindElement(By.Name("Submit"));
         private IWebElement _nullQuantity => SeleniumDriver.FindElement(By.ClassName("fancybox-error"));
         private IWebElement _quantityField => SeleniumDriver.FindElement(By.Id("quantity_wanted"));
+        private IWebElement _cartQuantity => SeleniumDriver.FindElement(By.CssSelector(".ajax_cart_quantity:nth-child(2)"));
 
         public AP_ProductPage(IWebDriver seleniumDriver)
         {
@@ -81,6 +82,11 @@ namespace AutomationPracticeTestFramework
         public string NullQuantity()
         {
             return _nullQuantity.Text;
+        }
+
+        public string CartQuantity()
+        {
+            return _cartQuantity.Text;
         }
     }
 }

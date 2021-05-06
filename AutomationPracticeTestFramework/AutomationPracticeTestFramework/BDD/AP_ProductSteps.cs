@@ -90,6 +90,14 @@ namespace AutomationPracticeTestFramework.BDD
             Assert.That(_website.AP_ProductPage.NullQuantityAlert, Does.Contain(nullAlertMsg));
         }
 
+        // Cart quantity success
+        [Then(@"The quantity of items in the cart should be ""(.*)""")]
+        public void ThenTheQuantityOfItemsInTheCartShouldBe(string expResult)
+        {
+            Assert.That(_website.AP_ProductPage.CartQuantity(), Is.EqualTo(expResult));
+        }
+
+
         [AfterScenario]
         public void DisposeWebDriver()
         {

@@ -78,3 +78,12 @@ And I change the quantity to "-10"
 When I click the add to cart button
 Then The Quantity should be "11"
 
+@happy
+Scenario: Select color of item
+	Given I go to the homepage
+	And I click the T-shirts tab
+	When I choose an item and click more
+	And I select the color
+	When I click the add to cart button
+	Then I should get a success alert with the selected color "Blue"
+	

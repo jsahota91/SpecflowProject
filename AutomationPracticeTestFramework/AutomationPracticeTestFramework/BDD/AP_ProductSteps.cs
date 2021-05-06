@@ -124,6 +124,18 @@ namespace AutomationPracticeTestFramework.BDD
             Assert.That(_website.AP_ProductPage.CheckQuantitySize(), Is.EqualTo(quantity.ToString()));
         }
 
+        [When(@"I select the color")]
+        public void WhenISelectTheColor()
+        {
+            _website.AP_ProductPage.GetSelectedColor();
+        }
+
+        [Then(@"I should get a success alert with the selected color ""(.*)""")]
+        public void ThenIShouldGetASuccessAlertWithTheSelectedColor(string colorSelected)
+        {
+            Assert.That(_website.AP_ProductPage.DisplaySelectedItem, Does.Contain(colorSelected));
+        }
+
         [AfterScenario]
         public void DisposeWebDriver()
         {

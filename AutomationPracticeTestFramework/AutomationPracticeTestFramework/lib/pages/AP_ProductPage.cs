@@ -19,6 +19,7 @@ namespace AutomationPracticeTestFramework
         private IWebElement _quantityField => SeleniumDriver.FindElement(By.Id("quantity_wanted"));
         private IWebElement _dropdown => SeleniumDriver.FindElement(By.Id("group_1"));
         private IWebElement _selectedItem => SeleniumDriver.FindElement(By.Id("layer_cart_product_attributes"));
+        private IWebElement _selectedColor => SeleniumDriver.FindElement(By.Id("color_14"));
         private IWebElement _popupCartQuantity => SeleniumDriver.FindElement(By.ClassName("ajax_cart_quantity"));
         private IWebElement _cartQuantity => SeleniumDriver.FindElement(By.CssSelector(".ajax_cart_quantity:nth-child(2)"));
         private IWebElement _cart => SeleniumDriver.FindElement(By.CssSelector(".shopping_cart > a"));
@@ -107,6 +108,10 @@ namespace AutomationPracticeTestFramework
             return _selectedItem.Text;
         }
 
+        public void GetSelectedColor()
+        {
+            _selectedColor.Click();
+        }
         public string CheckQuantitySize()
         {
             return _popupCartQuantity.Text;

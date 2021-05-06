@@ -36,6 +36,32 @@ namespace AutomationPracticeTestFramework.BDD
             Assert.That(_website.AP_ProductPage.AlertMessage(), Does.Contain(successmsg));
         }
 
+        [Given(@"I click the more button")]
+        public void GivenIClickTheMoreButton()
+        {
+            _website.AP_ProductPage.ClickMoreBtn();
+        }
+
+        [When(@"I enter a string in the quantity field ""(.*)""")]
+        public void WhenIEnterAStringInTheQuantityField(string quantity)
+        {
+            _website.AP_ProductPage.GetQuantityInput(quantity);
+        }
+
+        [When(@"I click the add to cart button")]
+        public void WhenIClickTheAddToCartButton()
+        {
+            _website.AP_ProductPage.ClickExclusiveBtn();
+            Thread.Sleep(2000);
+        }
+
+        [Then(@"I should get an error alert ""(.*)""")]
+        public void ThenIShouldGetAnErrorAlert(string nullAlertMsg)
+        {
+            Assert.That(_website.AP_ProductPage.NullQuantityAlert, Does.Contain(nullAlertMsg));
+        }
+
+
         [AfterScenario]
         public void DisposeWebDriver()
         {

@@ -57,8 +57,6 @@ namespace AutomationPracticeTestFramework.BDD
             Assert.That(_website.AP_CreateAccount.SeleniumDriver.Url, Is.EqualTo(url));
         }
 
-
-
         [AfterScenario]
         public void DisposeWebDriver()
         {

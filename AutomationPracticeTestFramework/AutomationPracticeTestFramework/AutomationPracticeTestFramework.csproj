@@ -103,10 +103,12 @@
     <Compile Include="AppConfigReader.cs" />
     <Compile Include="BDD\AP_CreateAccountSteps.cs" />
     <Compile Include="BDD\AP_ForgotPasswordSteps.cs" />
+    <Compile Include="BDD\AP_ProductSteps.cs" />
     <Compile Include="BDD\AP_SigninSteps.cs" />
     <Compile Include="lib\pages\AP_CreateAccount.cs" />
     <Compile Include="lib\pages\AP_HomePage.cs" />
     <Compile Include="lib\pages\AP_ForgotPassword.cs" />
+    <Compile Include="lib\pages\AP_ProductPage.cs" />
     <Compile Include="lib\pages\AP_SigninPage.cs" />
     <Compile Include="lib\AP_Website.cs" />
     <Compile Include="lib\driver_config\SeleniumDriverConfig.cs" />
@@ -119,6 +121,7 @@
     <None Include="app.config" />
     <None Include="BDD\AP_CreateAccount.feature" />
     <None Include="BDD\AP_ForgotPassword.feature" />
+    <None Include="BDD\AP_Product.feature" />
     <None Include="BDD\AP_Signin.feature" />
     <None Include="ClassDiagram.cd" />
     <None Include="packages.config" />

@@ -12,6 +12,10 @@ namespace AutomationPracticeTestFramework
         private IWebElement _addToCartBtn => SeleniumDriver.FindElement(By.CssSelector(".ajax_add_to_cart_button > span"));
         private IWebElement _alertMsg => SeleniumDriver.FindElement(By.ClassName("layer_cart_product"));
         private IWebElement _crossBtn => SeleniumDriver.FindElement(By.CssSelector(".cross"));
+        private IWebElement _moreBtn => SeleniumDriver.FindElement(By.CssSelector(".lnk_view > span"));
+        private IWebElement _exclusiveAddToCartBtn => SeleniumDriver.FindElement(By.CssSelector(".exclusive > span"));
+        private IWebElement _nullQuantity => SeleniumDriver.FindElement(By.ClassName("fancybox-error"));
+        private IWebElement _quantityField => SeleniumDriver.FindElement(By.Id("quantity_wanted"));
 
         public AP_ProductPage(IWebDriver seleniumDriver)
         {
@@ -30,10 +34,33 @@ namespace AutomationPracticeTestFramework
         {
             _addToCartBtn.Click();
         }
-
         public string AlertMessage()
         {
             return _alertMsg.Text;
+        }
+
+        public void ClickMoreBtn()
+        {
+            _moreBtn.Click();
+        }
+
+        public string NullQuantityAlert()
+        {
+            return _nullQuantity.Text;
+        }
+
+        public void ClickExclusiveBtn()
+        {
+            _exclusiveAddToCartBtn.Click();
+        }
+
+        
+
+        public void GetQuantityInput(string inputQuantity)
+        {
+            _quantityField.Clear();
+            _quantityField.SendKeys(inputQuantity);
+            
         }
 
         public void ClickCrossBtn()

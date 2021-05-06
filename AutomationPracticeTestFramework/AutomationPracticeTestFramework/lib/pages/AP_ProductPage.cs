@@ -73,11 +73,6 @@ namespace AutomationPracticeTestFramework
             return _cartEmpty.Text;
         }
 
-        public void ClickMoreBtn()
-        {
-            _moreBtn.Click();
-        }
-
         public void ClickPPAddToCartBtn()
         {
             _productPageAddToCartBtn.Click();

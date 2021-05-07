@@ -23,6 +23,7 @@ namespace AutomationPracticeTestFramework.BDD
             Thread.Sleep(2000);
         }
         
+        //Choose item to add to cart
         [When(@"I choose an item and click add to cart")]
         public void WhenIChooseAnItemAndClickAddToCart()
         {
@@ -92,7 +93,6 @@ namespace AutomationPracticeTestFramework.BDD
             Thread.Sleep(2000);
         }
 
-
         [Then(@"I should get an error alert ""(.*)""")]
         public void ThenIShouldGetAnErrorAlert(string nullAlertMsg)
         {
@@ -134,6 +134,18 @@ namespace AutomationPracticeTestFramework.BDD
         public void ThenIShouldGetASuccessAlertWithTheSelectedColor(string colorSelected)
         {
             Assert.That(_website.AP_ProductPage.DisplaySelectedItem, Does.Contain(colorSelected));
+        }
+
+        [When(@"I click add to wishlist")]
+        public void WhenIClickAddToWishlist()
+        {
+            _website.AP_ProductPage.ClickAddToWishList();
+        }
+
+        [Then(@"I will get a pop up saying ""(.*)""")]
+        public void ThenIWillGetAPopUpSaying(string error)
+        {
+            Assert.That(_website.AP_ProductPage.ErrorMessage(), Is.EqualTo(error));
         }
 
         [AfterScenario]

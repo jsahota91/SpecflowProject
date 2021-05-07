@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
+using System;
 using System.Threading;
 
 namespace AutomationPracticeTestFramework
@@ -24,6 +25,8 @@ namespace AutomationPracticeTestFramework
         private IWebElement _cartQuantity => SeleniumDriver.FindElement(By.CssSelector(".ajax_cart_quantity:nth-child(2)"));
         private IWebElement _cart => SeleniumDriver.FindElement(By.CssSelector(".shopping_cart > a"));
         private IWebElement _removeBtn => SeleniumDriver.FindElement(By.CssSelector(".ajax_cart_block_remove_link"));
+        private IWebElement _wishListBtn => SeleniumDriver.FindElement(By.Id("wishlist_button"));        
+        private IWebElement _errorMessageBox => SeleniumDriver.FindElement(By.ClassName("fancybox-error"));
 
         public AP_ProductPage(IWebDriver seleniumDriver)
         {
@@ -66,8 +69,7 @@ namespace AutomationPracticeTestFramework
         public void GetQuantityInput(string inputQuantity)
         {
             _quantityField.Clear();
-            _quantityField.SendKeys(inputQuantity);
-            
+            _quantityField.SendKeys(inputQuantity);            
         }
 
         public void ClickCrossBtn()
@@ -115,6 +117,16 @@ namespace AutomationPracticeTestFramework
         public string CheckQuantitySize()
         {
             return _popupCartQuantity.Text;
+        }
+
+        public void ClickAddToWishList()
+        {
+            _wishListBtn.Click();
+        }
+
+        public string ErrorMessage()
+        {
+            return _errorMessageBox.Text;
         }
     }
 }

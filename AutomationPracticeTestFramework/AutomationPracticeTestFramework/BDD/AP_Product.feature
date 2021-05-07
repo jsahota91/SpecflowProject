@@ -10,7 +10,7 @@ Scenario: Add product to cart
 	When I choose an item and click add to cart
 	Then I should get a success alert "Product successfully added to your shopping cart"
   
-@sad
+@unhappy
 Scenario: Null quantity when entering a word
 	Given I go to the homepage
 	And I click the T-shirts tab 
@@ -19,8 +19,8 @@ Scenario: Null quantity when entering a word
 	When I click the add to cart button
 	Then I should get an error alert "Null quantity."
 
-	@unhappy
-Scenario: Add product to too high a value
+@unhappy
+Scenario: Add product with extreme quantity
 	Given I go to the homepage
 	And I click the T-shirts tab
 	When I choose an item and click add to cart
@@ -30,7 +30,7 @@ Scenario: Add product to too high a value
 	When I click the add to cart button
 	Then The items in the cart should be "(empty)"
 
-	@unhappy
+@unhappy
 Scenario: Add product with zero quantity
 	Given I go to the homepage
 	And I click the T-shirts tab
@@ -39,7 +39,7 @@ Scenario: Add product with zero quantity
 	When I click the add to cart button
 	Then I should get an error alert "Null quantity."
 
-	@happy
+@happy
 Scenario: Change Quantity
 	Given I go to the homepage
 	And I click the T-shirts tab
@@ -48,7 +48,7 @@ Scenario: Change Quantity
 	When I click the add to cart button
 	Then The quantity of items in the cart should be "3"
 
-		@happy
+@happy
 Scenario: Remove item from cart
 	Given I go to the homepage
 	And I click the T-shirts tab 
@@ -57,7 +57,7 @@ Scenario: Remove item from cart
 	And I hover my mouse over the cart and click the cart cross button
 	Then The items in the cart should be "(empty)"
 
-#@happy
+@happy
 Scenario: Select size of item
 	Given I go to the homepage
 	And I click the T-shirts tab
@@ -66,17 +66,16 @@ Scenario: Select size of item
 	When I click the add to cart button
 	Then I should get a success alert with the selected size "L"
 
-
 @unhappy
 Scenario: Change quantity to negative number
-Given I go to the homepage
-And I click the T-shirts tab
-When I choose an item and click add to cart
-And I close the success popup
-And I choose an item and click more
-And I change the quantity to "-10"
-When I click the add to cart button
-Then The Quantity should be "11"
+	Given I go to the homepage
+	And I click the T-shirts tab
+	When I choose an item and click add to cart
+	And I close the success popup
+	And I choose an item and click more
+	And I change the quantity to "-10"
+	When I click the add to cart button
+	Then The Quantity should be "11"
 
 @happy
 Scenario: Select color of item
@@ -86,4 +85,12 @@ Scenario: Select color of item
 	And I select the color
 	When I click the add to cart button
 	Then I should get a success alert with the selected color "Blue"
+
+@unhappy
+	Scenario: failed add to wishlist
+	Given I go to the homepage
+	And I click the T-shirts tab
+	When I choose an item and click more
+	When I click add to wishlist
+	Then I will get a pop up saying "You must be logged in to manage your wishlist."
 	
